@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build Artifacts
+target/
+dist/
+**/*.so
+**/*.dummy
+
+# Environment & Secrets
+.env
+.env.*
+.DS_Store
+*.key
+*.json
+
+# Exceptions (Allow these specific JSONs)
+!package.json
+!tsconfig.json
+!excelsior.json
+!luxor.json
+
+# Framework Configs
+!Anchor.toml
+
+# IDE settings
+.vscode/
+.idea/
+
+# Specific Wallet Folders (Redundant but safe)
+wallets/
+ledger/
+.anchor/
+
+# Specific Root Secrets
+saved_keypair.json
+test-ledger/
