@@ -1,9 +1,9 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
-import { Loader2, RefreshCw } from "lucide-react";
+import { getAssociatedTokenAddressSync, TOKEN_2022_PROGRAM_ID } from "@solana/spl-token";
+import { RefreshCw, AlertCircle } from "lucide-react";
 
 // Types corresponding to our JSON
 interface WalletInfo {
@@ -25,72 +25,72 @@ interface WalletBalance {
 export default function WalletGrid({ wallets }: { wallets: WalletInfo[] }) {
     const [balances, setBalances] = useState<Record<string, WalletBalance>>({});
     const [loading, setLoading] = useState(false);
-    const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const fetchBalances = async () => {
         setLoading(true);
-        const connection = new Connection("https://api.devnet.solana.com", "confirmed");
-        const newBalances: Record<string, WalletBalance> = {};
+        setError(null);
 
-        // In a real app, use getMultipleAccounts or optimize this. For now, sequential/parallel is fine for 50.
-        // We will batch them in groups of 10 to avoid rate limits slightly.
-        const BATCH_SIZE = 5;
-        for (let i = 0; i < wallets.length; i += BATCH_SIZE) {
-            const batch = wallets.slice(i, i + BATCH_SIZE);
-            await Promise.all(batch.map(async (wallet) => {
-                try {
-                    const pubKey = new PublicKey(wallet.address);
+        try {
+            // Using a public RPC endpoint. If this fails, consider a dedicated QuickNode/Helius endpoint.
+            const connection = new Connection("https://api.devnet.solana.com", "confirmed");
 
-                    // 1. Get SOL Balance
-                    const sol = await connection.getBalance(pubKey);
+            const walletKeys = wallets.map(w => new PublicKey(w.address));
 
-                    // 2. Get Token Accounts
-                    const tokenAccounts = await connection.getParsedTokenAccountsByOwner(pubKey, {
-                        programId: new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"), // Token Program
-                        // Note: Token-2022 is separate. We should check both or assume Mint is Token-2022.
-                        // Actually our Mints are Token-2022.
-                    });
+            // 1. Fetch SOL Balances (Batched)
+            // getMultipleAccountsInfo supports up to 100 accounts per call. We have ~55.
+            const solAccounts = await connection.getMultipleAccountsInfo(walletKeys);
 
-                    // Fetch Token-2022 Accounts (Important!)
-                    const token2022Accounts = await connection.getParsedTokenAccountsByOwner(pubKey, {
-                        programId: new PublicKey("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"),
-                    });
+            // 2. Prepare ATAs for Tokens (LXR & XLS)
+            // We use Token-2022 Program ID as per project specs
+            const lxrAtas = walletKeys.map(key => getAssociatedTokenAddressSync(LXR_MINT, key, false, TOKEN_2022_PROGRAM_ID));
+            const xlsAtas = walletKeys.map(key => getAssociatedTokenAddressSync(XLS_MINT, key, false, TOKEN_2022_PROGRAM_ID));
 
-                    let lxr = 0;
-                    let xls = 0;
+            // 3. Fetch Token Accounts (Batched)
+            const lxrAccounts = await connection.getMultipleAccountsInfo(lxrAtas);
+            const xlsAccounts = await connection.getMultipleAccountsInfo(xlsAtas);
 
-                    // Helper to parse accounts
-                    const parse = (accounts: any) => {
-                        for (const { account } of accounts.value) {
-                            const info = account.data.parsed.info;
-                            const mint = info.mint;
-                            const amount = info.tokenAmount.uiAmount;
+            const newBalances: Record<string, WalletBalance> = {};
 
-                            if (mint === LXR_MINT.toBase58()) lxr = amount;
-                            if (mint === XLS_MINT.toBase58()) xls = amount;
-                        }
-                    };
+            wallets.forEach((wallet, index) => {
+                // Parse SOL
+                const solLamports = solAccounts[index]?.lamports || 0;
 
-                    parse(tokenAccounts);
-                    parse(token2022Accounts);
-
-                    newBalances[wallet.address] = {
-                        sol: sol / LAMPORTS_PER_SOL,
-                        lxr,
-                        xls
-                    };
-
-                } catch (e) {
-                    console.error(`Failed to fetch for ${wallet.name}`, e);
+                // Parse LXR (Manual Layout Parsing for efficiency)
+                // Layout: Mint(32) + Owner(32) + Amount(8) + ...
+                // The amount is at offset 64. It looks like a u64 (little endian).
+                let lxrAmount = 0;
+                if (lxrAccounts[index]) {
+                    const data = lxrAccounts[index]!.data;
+                    if (data.length >= 72) { // 64 offset + 8 bytes
+                        lxrAmount = Number(data.readBigUInt64LE(64)) / 1_000_000_000; // Decimals 9
+                    }
                 }
-            }));
-            // Small delay
-            await new Promise(r => setTimeout(r, 200));
-        }
 
-        setBalances(newBalances);
-        setLastUpdated(new Date());
-        setLoading(false);
+                // Parse XLS
+                let xlsAmount = 0;
+                if (xlsAccounts[index]) {
+                    const data = xlsAccounts[index]!.data;
+                    if (data.length >= 72) {
+                        xlsAmount = Number(data.readBigUInt64LE(64)) / 1_000_000_000; // Decimals 9
+                    }
+                }
+
+                newBalances[wallet.address] = {
+                    sol: solLamports / LAMPORTS_PER_SOL,
+                    lxr: lxrAmount,
+                    xls: xlsAmount
+                };
+            });
+
+            setBalances(newBalances);
+
+        } catch (e: any) {
+            console.error("Fetch error:", e);
+            setError(e.message || "Failed to sync with Solana Network");
+        } finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -107,14 +107,22 @@ export default function WalletGrid({ wallets }: { wallets: WalletInfo[] }) {
         <div className="space-y-8">
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-medium text-slate-400">Network Overview</h2>
-                <button
-                    onClick={fetchBalances}
-                    disabled={loading}
-                    className="flex items-center gap-2 px-3 py-1.5 text-sm bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 rounded-lg transition-colors disabled:opacity-50"
-                >
-                    <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-                    {loading ? 'Syncing...' : 'Refresh Data'}
-                </button>
+                <div className="flex items-center gap-4">
+                    {error && (
+                        <div className="flex items-center text-red-400 text-sm gap-2">
+                            <AlertCircle className="w-4 h-4" />
+                            {error}
+                        </div>
+                    )}
+                    <button
+                        onClick={fetchBalances}
+                        disabled={loading}
+                        className="flex items-center gap-2 px-3 py-1.5 text-sm bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 rounded-lg transition-colors disabled:opacity-50"
+                    >
+                        <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+                        {loading ? 'Syncing...' : 'Refresh Data'}
+                    </button>
+                </div>
             </div>
 
             {/* Master Wallets Grid */}
@@ -139,11 +147,11 @@ export default function WalletGrid({ wallets }: { wallets: WalletInfo[] }) {
                             <div className="space-y-2 pt-4 border-t border-slate-800/50">
                                 <div className="flex justify-between items-center bg-slate-950/50 p-2 rounded">
                                     <span className="text-xs text-slate-400">LXR Balance</span>
-                                    <span className="text-sm font-semibold text-emerald-400">{fmt(bal?.lxr)}</span>
+                                    <span className="text-sm font-semibold text-emerald-400">{bal ? fmt(bal.lxr) : '-'}</span>
                                 </div>
                                 <div className="flex justify-between items-center bg-slate-950/50 p-2 rounded">
                                     <span className="text-xs text-slate-400">XLS Balance</span>
-                                    <span className="text-sm font-semibold text-amber-400">{fmt(bal?.xls)}</span>
+                                    <span className="text-sm font-semibold text-amber-400">{bal ? fmt(bal.xls) : '-'}</span>
                                 </div>
                             </div>
                         </div>
@@ -156,27 +164,27 @@ export default function WalletGrid({ wallets }: { wallets: WalletInfo[] }) {
                 <div className="px-6 py-4 border-b border-slate-800 bg-slate-900/50">
                     <h3 className="font-semibold text-white">Distribution Fleet ({distWallets.length})</h3>
                 </div>
-                <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left">
-                        <thead className="bg-slate-950 text-slate-400 uppercase text-xs">
+                <div className="overflow-x-auto h-[600px]">
+                    <table className="w-full text-sm text-left relative">
+                        <thead className="bg-slate-950 text-slate-400 uppercase text-xs sticky top-0 z-10">
                             <tr>
-                                <th className="px-6 py-3">Wallet Name</th>
-                                <th className="px-6 py-3">Address</th>
-                                <th className="px-6 py-3 text-right">SOL</th>
-                                <th className="px-6 py-3 text-right">LXR</th>
-                                <th className="px-6 py-3 text-right">XLS</th>
+                                <th className="px-6 py-3 bg-slate-950">Wallet Name</th>
+                                <th className="px-6 py-3 bg-slate-950">Address</th>
+                                <th className="px-6 py-3 text-right bg-slate-950">SOL</th>
+                                <th className="px-6 py-3 text-right bg-slate-950">LXR</th>
+                                <th className="px-6 py-3 text-right bg-slate-950">XLS</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-800">
+                        <tbody className="divide-y divide-slate-800 overflow-y-auto">
                             {distWallets.map((wallet) => {
                                 const bal = balances[wallet.address];
                                 return (
                                     <tr key={wallet.address} className="hover:bg-slate-800/50 transition-colors">
                                         <td className="px-6 py-4 font-medium text-white">{wallet.name}</td>
                                         <td className="px-6 py-4 font-mono text-slate-500 text-xs">{wallet.address.slice(0, 4)}...{wallet.address.slice(-4)}</td>
-                                        <td className="px-6 py-4 text-right text-slate-300">{fmt(bal?.sol)}</td>
-                                        <td className="px-6 py-4 text-right text-emerald-400 font-mono">{fmt(bal?.lxr)}</td>
-                                        <td className="px-6 py-4 text-right text-amber-400 font-mono">{fmt(bal?.xls)}</td>
+                                        <td className="px-6 py-4 text-right text-slate-300">{bal ? fmt(bal.sol) : '-'}</td>
+                                        <td className="px-6 py-4 text-right text-emerald-400 font-mono">{bal ? fmt(bal.lxr) : '-'}</td>
+                                        <td className="px-6 py-4 text-right text-amber-400 font-mono">{bal ? fmt(bal.xls) : '-'}</td>
                                     </tr>
                                 )
                             })}
