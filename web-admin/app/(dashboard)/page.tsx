@@ -1,6 +1,6 @@
 
 import WalletGrid from "@/components/WalletGrid";
-import walletData from "@/lib/wallet-addresses.json";
+import walletData from "../../lib/wallet-addresses.json";
 
 // Type assertion for the JSON import
 const wallets = walletData as Array<{ name: string; address: string; type: "Master" | "Distribution" | "System" }>;
