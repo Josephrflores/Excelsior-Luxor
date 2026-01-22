@@ -1,0 +1,277 @@
+[
+  {
+    "name": "master_personal",
+    "address": "6HTDhYBmSU5Ei2MKG9Zg7WBYnJWX8Q87DvGpfcFAt9ko",
+    "type": "Master"
+  },
+  {
+    "name": "master_operations",
+    "address": "B4oFz3PjG8psJsZotesJmT9W33Qz3fzYY2NWkvUjcTRF",
+    "type": "Master"
+  },
+  {
+    "name": "master_holding",
+    "address": "9vH4YyXrCAFe47eQ5pKn9tHkmU7SWJg5z84TUamLRdKA",
+    "type": "Master"
+  },
+  {
+    "name": "master_reserve",
+    "address": "3cRzxn7NvpKWuwGjbSQwS2SbsrLwn1g9LY8ke1GZTB8i",
+    "type": "Master"
+  },
+  {
+    "name": "Roosevelt",
+    "address": "Hf4rcgDXFKtJ4kskxqThTYtGVPHHQCnn1xopPxa6ofUc",
+    "type": "Distribution"
+  },
+  {
+    "name": "Valentina",
+    "address": "eMoQURy7rBsJKXj7pLsrEvNi831zrokC5DLagfns9X8",
+    "type": "Distribution"
+  },
+  {
+    "name": "Udreamms",
+    "address": "3jrcvmJ4xFSeiY4pSTHmuuNSJ3JZ86QmqiH2x9pG4jvq",
+    "type": "Distribution"
+  },
+  {
+    "name": "Julio",
+    "address": "HDxSZDZmJfRxbMjuLxL34q1BgvXi34eQW8oLPxB1SRdr",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_10",
+    "address": "CgNrjhypmRZG5RThywYSEHj9UrdXKQBKGUjgndtADQdt",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_11",
+    "address": "AuuNGo5JqR5gR8K5jKnT1WrFTn66PEzgpg1rRZ1ffMF2",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_12",
+    "address": "W7CwRpHje9CTioWi8azKVYTbk6NevYmF3W5DyLHgvB9",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_13",
+    "address": "G1tqk2UnxnvttX6AiF8xPakD1o1HX5aLQvgCvF3JxVdD",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_14",
+    "address": "71kHUdrdcdQba6chUM8DC5n8m6P7LGPhHnK8xUHhmXAt",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_15",
+    "address": "GDMA1dUBHREFfseVhopF3bkyvkTH32DeKDWFX86Cpipj",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_16",
+    "address": "AbWhjuGvokQPpLKkxxiq2UbSahmpb3sXgzA9VGEarhCB",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_17",
+    "address": "GrPtmVnjevLmBTT8VdKwKcSr6FTS2Z9yq9n2mpRSgt1E",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_18",
+    "address": "5ALmQuHFXQGG2ZKBnuSTNXfKmW16XkMU2AGpn2imzeM7",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_19",
+    "address": "5zM8GHpZZwCq9UBxLPcrCu5Tf3ujN9bxtn6L7kd1XQKf",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_2",
+    "address": "9EurfgfiULpR5eimTqua29G9WB9Kxc1FP4WQmRCzhzsC",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_20",
+    "address": "GFmFumaVwFDapFwsxGK3KTURJJWeDjz76AeEZdfhHuMx",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_21",
+    "address": "DcbwHXwgwkXSYeBsKwk6M3HcZEAmidoFGjpTb5Fyyo5i",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_22",
+    "address": "2bkYhbF5yQvzWc9r5q4qWHuGwsDZDvNgMZuyZuSem4nP",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_23",
+    "address": "GW2ybmPELe1n75Mmh31cvaBu1ALStsjC8Sxu3ksquxc5",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_24",
+    "address": "7sAHiUR81RYenwEm6vUiQ6buaT82y4bqCXVkF9KgfcHE",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_25",
+    "address": "Mk3sfGGtfArfpfjs6PinfHZLHQ8BN4qe7JDpCTuCt6k",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_26",
+    "address": "GQaywa1aMP9SiuMPRiMuvoS6DBtpsnSAUMv8J3f4Moui",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_27",
+    "address": "52kcGng63Q44guQQ6JrWX6aQ3E7DN2RGRE2vLfaRsvup",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_28",
+    "address": "7MoSNnWYLtN5nw64Sm1jY8VZyP7hEjFkMts8XFT1yhqe",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_29",
+    "address": "EbrbPoUewgzL9tt5eNb6RvHH6XgxAkM5nLGp5pQV74dm",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_3",
+    "address": "Capn1Ko8toh5LGvmBxnsBCRauAQfTNxJvGY7PQXEGxD5",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_30",
+    "address": "FHng43W66Uchiy8nMnWBosd4MvqhaaLxjyaUzUaXiV6p",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_31",
+    "address": "72a2uapCBdA39LXCDNA5JjBMRHgjrJZYThQaMiibinrW",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_32",
+    "address": "AWkeEN6Qu3rfbocdR626i6DWWdoqp3CQWt4BAaw76P1b",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_33",
+    "address": "AFT9xjdiD1DSPMmZQcuzjTHX9hSA1X241jWmkAfyju84",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_34",
+    "address": "AoxV73787dykZs5Fqz8Xc2oS6SgoUhAqC3QmayBJUwwf",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_35",
+    "address": "Fh6sBacjeQ6DJabo836gP6qLZAKE7uS8fKXS1idprxPC",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_36",
+    "address": "Har3xRbxGDYpuJY5Ac5mVjrvjRiYjXjfXUQCphvLyiX3",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_37",
+    "address": "UUSmiv3ky5WLhHGi1PVp6VA4BPJPWdbdWwfJNsfmDr4",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_38",
+    "address": "ESsuWMVMsSGPAveTykRr9JRrXmNH7vN1iJWLHcckKRsP",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_39",
+    "address": "5SHm7CLtdyi9TZNN67eSuBLaZv8H9noCH8t7abwj7jLp",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_4",
+    "address": "DKK8TnFEzYUGysiBmXDoNgJZFZt828wVQ9VQeQBRtHae",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_40",
+    "address": "9gQ2xAUh9FQMJTzkLtZnt6QQ1CaPFBB5zbHRnDr3roU1",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_41",
+    "address": "6J75FyXdNK7mxLBsHxZCYdfpcQL55WrEgoHATE2J26Ze",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_42",
+    "address": "A92EgyBFGbfUoQj8JBGmxsBKTAXd1ScQGgSDRhh7m7pv",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_43",
+    "address": "H3fTKgseb4wBPQKLuwjtCogRvbCs9p4kLivc3LMusZjr",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_44",
+    "address": "E98B8e6spFHpS6vCMie5X1oeS2qyc2uLU5hhRaRc9Vd3",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_45",
+    "address": "CPKcwJZMaNwfUMq7UWjZHpJtz13ivPfEtmf6Mf7eFcRp",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_46",
+    "address": "Fo9Td5L5awX376oCNeVCfCU4ohkesX9rQvcipDNZAcLv",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_47",
+    "address": "BYKYmAbqxkdbMtrZoi2S8Fy8hF7AAzkGEDZH7RFAfjZm",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_5",
+    "address": "5XhEtbTsnviPcYSYnLq2jJf7ZgGn85GBtLsSKR9eBDBn",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_6",
+    "address": "4ffxrEorivYnVfvmzHRDQRAicD9TNg4Cy5nK28mWuydC",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_7",
+    "address": "DnBoKgNo1mHvPbKo9Kqbqiv8Q4iLSZUWJNethtwTZTJm",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_8",
+    "address": "E9xhmq34QVqCestsPj9HT3Uvcurey7TybjdjziG4mtmL",
+    "type": "Distribution"
+  },
+  {
+    "name": "Unnamed_9",
+    "address": "ADX7UCEMBjWg1tNcnjJDJa5MYAtesi1pnV1ZN59mGPSy",
+    "type": "Distribution"
+  },
+  {
+    "name": "Admin",
+    "address": "7EdDpmBEvhw1v79ysqQrEK7iHDVzBaRPuwnUDP2vu3Lk",
+    "type": "System"
+  }
+]
