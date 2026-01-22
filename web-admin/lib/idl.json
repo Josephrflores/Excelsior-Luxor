@@ -1,0 +1,156 @@
+{
+    "version": "0.1.0",
+    "name": "excelsior",
+    "instructions": [
+        {
+            "name": "distributeRent",
+            "accounts": [
+                {
+                    "name": "admin",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "globalConfig",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "adminLxrAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "rwaVaultLxr",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "lxrVaultRewards",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "lxrMint",
+                    "isMut": false,
+                    "isSigner": false
+                },
+                {
+                    "name": "tokenProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "amount",
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "triggerInflation",
+            "accounts": [
+                {
+                    "name": "admin",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "globalConfig",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "lxrMint",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "reserveWallet",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "tokenProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": []
+        }
+    ],
+    "accounts": [
+        {
+            "name": "GlobalConfig",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "admin",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "xlsMint",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "lxrMint",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "rwaVaultLxr",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "xlsVaultSupply",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "rwaWallet",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "founderWallet",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "feeBasisPoints",
+                        "type": "u16"
+                    },
+                    {
+                        "name": "maxFeeBasisPoints",
+                        "type": "u16"
+                    },
+                    {
+                        "name": "totalLxrBurned",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "totalStakedXls",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "accRewardsPerShare",
+                        "type": "u128"
+                    },
+                    {
+                        "name": "lastInflationTimestamp",
+                        "type": "i64"
+                    },
+                    {
+                        "name": "lxrVaultRewards",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "bump",
+                        "type": "u8"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "address": "CihitmkdTdh48gvUZSjU7rZ8EARQksJNxspwnRu7ZhAp"
+    }
+}
