@@ -31,7 +31,7 @@ const TokenomicsChart = () => {
                     </Pie>
                     <Tooltip
                         contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', color: '#fff' }}
-                        formatter={(value: number) => [`${value}%`, 'Allocation']}
+                        formatter={(value: any) => [`${value}%`, 'Allocation']}
                     />
                     <Legend
                         verticalAlign="bottom"
