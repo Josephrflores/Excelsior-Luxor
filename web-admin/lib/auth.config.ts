@@ -5,7 +5,7 @@ export const authConfig = {
         signIn: '/login',
         error: '/login', // Error code passed in url query string as ?error=
         verifyRequest: '/login', // (used for check email message)
-        newUser: '/dashboard' // If new user, redirect here
+        newUser: '/' // If new user, redirect here
     },
     callbacks: {
         authorized({ auth, request: { nextUrl } }) {
