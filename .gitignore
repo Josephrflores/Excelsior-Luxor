@@ -24,6 +24,10 @@ dist/
 # Framework Configs
 !Anchor.toml
 
+# Allowed Configs
+!web-admin/lib/wallet-addresses.json
+!web-admin/lib/idl.json
+
 # IDE settings
 .vscode/
 .idea/
