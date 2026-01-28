@@ -27,6 +27,7 @@ dist/
 # Allowed Configs
 !web-admin/lib/wallet-addresses.json
 !web-admin/lib/idl.json
+!web-landing/messages/*.json
 
 # IDE settings
 .vscode/

@@ -1,0 +1,49 @@
+{
+    "HomePage": {
+        "title": "Dos tokens.\nUn ecosistema poderoso.",
+        "subtitle": "**Excelsior (XLS)** preserva el valor mediante el modelo del Patrón Oro, mientras que **Luxor (LXR)** impulsa la economía como motor de liquidez. Diseñado para la estabilidad y el crecimiento en Solana.",
+        "cta_main": "Casa de la Moneda Luxor (LXR)",
+        "cta_secondary": "Leer el documento técnico",
+        "features": {
+            "reserve": {
+                "title": "Moneda de reserva",
+                "description": "Excelsior (XLS) actúa como reserva de valor del ecosistema, con un suministro escaso de 20,25 millones de tokens diseñados para su mantenimiento a largo plazo."
+            },
+            "liquidity": {
+                "title": "Motor de liquidez",
+                "description": "Luxor (LXR) proporciona la liquidez necesaria para las transacciones, con un suministro mayor de 2.025B para facilitar el volumen del ecosistema."
+            },
+            "speed": {
+                "title": "Solana Speed",
+                "description": "Aprovechar el programa Token-2022 de Solana para obtener regalías exigibles, transferencias seguras y firmeza en menos de un segundo."
+            }
+        },
+        "allocation": {
+            "title": "Asignación transparente",
+            "description": "Nuestro modelo de distribución garantiza la sostenibilidad a largo plazo. La mayoría de los tokens se almacenan en la Bóveda Central para apoyar la estabilidad del mercado.",
+            "charts": {
+                "excelsior_title": "Distribución Excelsior (XLS)",
+                "luxor_title": "Distribución Luxor (LXR)",
+                "founder": "Asignación de fundadores",
+                "founder_sub": "Adquirido durante 4 años",
+                "operations": "Fondo de Operaciones",
+                "operations_sub": "Marketing y desarrollo",
+                "holding": "Ecosistema Holding",
+                "holding_sub": "Recompensas y asociaciones",
+                "reserve": "Reserva Central",
+                "reserve_sub": "Respaldo de liquidez"
+            }
+        }
+    },
+    "Navbar": {
+        "home": "Inicio",
+        "excelsior": "Excelsior",
+        "luxor": "Luxor",
+        "roadmap": "Hoja de Ruta",
+        "team": "Equipo",
+        "community": "Comunidad"
+    },
+    "Common": {
+        "connectWallet": "Conectar Billetera"
+    }
+}

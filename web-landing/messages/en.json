@@ -1,0 +1,49 @@
+{
+    "HomePage": {
+        "title": "Two tokens.\nOne powerful ecosystem.",
+        "subtitle": "**Excelsior (XLS)** preserves value via the Gold Standard model, while **Luxor (LXR)** drives the economy as a liquidity engine. Designed for stability and growth on Solana.",
+        "cta_main": "Luxor Mint (LXR)",
+        "cta_secondary": "Read the Whitepaper",
+        "features": {
+            "reserve": {
+                "title": "Reserve Currency",
+                "description": "Excelsior (XLS) acts as the ecosystem's store of value, with a scarce supply of 20.25 million tokens designed for long-term holding."
+            },
+            "liquidity": {
+                "title": "Liquidity Engine",
+                "description": "Luxor (LXR) provides the necessary liquidity for transactions, with a larger supply of 2.025B to facilitate ecosystem volume."
+            },
+            "speed": {
+                "title": "Solana Speed",
+                "description": "Leveraging Solana's Token-2022 program for enforceable royalties, secure transfers, and sub-second finality."
+            }
+        },
+        "allocation": {
+            "title": "Transparent Allocation",
+            "description": "Our distribution model ensures long-term sustainability. The majority of tokens are held in the Central Vault to support market stability.",
+            "charts": {
+                "excelsior_title": "Excelsior (XLS) Distribution",
+                "luxor_title": "Luxor (LXR) Distribution",
+                "founder": "Founder Allocation",
+                "founder_sub": "Vested over 4 years",
+                "operations": "Operations Fund",
+                "operations_sub": "Marketing and development",
+                "holding": "Ecosystem Holding",
+                "holding_sub": "Rewards and partnerships",
+                "reserve": "Central Reserve",
+                "reserve_sub": "Liquidity backing"
+            }
+        }
+    },
+    "Navbar": {
+        "home": "Home",
+        "excelsior": "Excelsior",
+        "luxor": "Luxor",
+        "roadmap": "Roadmap",
+        "team": "Team",
+        "community": "Community"
+    },
+    "Common": {
+        "connectWallet": "Connect Wallet"
+    }
+}
